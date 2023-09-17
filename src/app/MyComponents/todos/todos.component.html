@@ -1,0 +1,25 @@
+
+<div class="container" >
+        <div class="todo-list">
+            <h2>Todo List</h2>
+
+            <br/>
+
+            <app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
+
+            <br/>
+
+
+           <div *ngFor="let todo of todos" >
+              <div class="todo-item">
+                <label for="todo1" class="me-4">{{todo.sno}}  -  <b>{{ todo.title }}</b>: {{todo.desc}}  </label>
+                <button class="btn btn-outline-danger" (click)="onClick(todo)"> Delete </button>
+              </div>
+          </div>
+      
+        </div>
+</div>
+    
+
+
+
