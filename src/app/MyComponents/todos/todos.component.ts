@@ -2,45 +2,45 @@ import { Component } from '@angular/core';
 import { Todo } from '../../Todo';
 
 @Component({
-  selector: 'app-todos',
-  templateUrl: './todos.component.html',
-  styleUrls: ['./todos.component.css']
+    selector: 'app-todos',
+    templateUrl: './todos.component.html',
+    styleUrls: ['./todos.component.css']
 })
 export class TodosComponent {
 
     todos: Todo[];
 
-    constructor()
-    {
+    constructor() {
         this.todos = [
             {
                 sno: 1,
                 title: "Dinner",
                 desc: " At 8pm",
-                active: true
+                completed: false
             },
             {
                 sno: 2,
                 title: "Playing",
                 desc: " At 6pm",
-                active: true
+                completed: false
             },
             {
                 sno: 3,
                 title: "huehuehue",
                 desc: " At 10pm",
-                active: true
+                completed: true
             }
         ]
     }
 
-    onClick( todo: Todo ){
-        const index = this.todos.indexOf(todo);
-        this.todos.splice(index, 1);
-        console.log('deleted');
+    addTodo(todo: Todo) {
+        this.todos.push(todo)
     }
 
-    addTodo( todo: Todo ){
-        this.todos.push(todo)
+    completeTodo(todo: Todo) {
+        const found = this.todos.find(t => t.sno === todo.sno);
+        if (found) {
+            found.completed = true;
+        }
     }
 }

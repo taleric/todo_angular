@@ -2,23 +2,22 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { Todo } from 'src/app/Todo';
 
 @Component({
-  selector: 'app-add-todo',
-  templateUrl: './add-todo.component.html',
-  styleUrls: ['./add-todo.component.css']
+    selector: 'app-add-todo',
+    templateUrl: './add-todo.component.html',
+    styleUrls: ['./add-todo.component.css']
 })
 export class AddTodoComponent {
 
-    title : string
+    title: string
     desc: string
     @Output() todoAdd: EventEmitter<Todo> = new EventEmitter();
 
-    onSubmit()
-    {
+    onSubmit() {
         const todo = {
-            sno: 0,
+            sno: Date.now(),
             title: this.title,
             desc: this.desc,
-            active: true
+            completed: false
         }
 
         this.todoAdd.emit(todo);

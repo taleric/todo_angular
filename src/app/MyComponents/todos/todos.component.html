@@ -12,8 +12,8 @@
 
            <div *ngFor="let todo of todos" >
               <div class="todo-item">
-                <label for="todo1" class="me-4">{{todo.sno}}  -  <b>{{ todo.title }}</b>: {{todo.desc}}  </label>
-                <button class="btn btn-outline-danger" (click)="onClick(todo)"> Delete </button>
+                <label for="todo1" class="me-4" [ngClass]="{'strikethrough': todo.completed}"><b>{{ todo.title }}</b>: {{todo.desc}}  </label>
+                <button *ngIf="!todo.completed" class="btn btn-outline-primary" (click)="completeTodo(todo)"> Complete </button>
               </div>
           </div>
       
